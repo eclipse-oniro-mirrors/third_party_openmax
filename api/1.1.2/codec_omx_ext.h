@@ -164,16 +164,6 @@ enum CodecVvcLevel {
 enum CodecColorFormatExt {
     CODEC_COLOR_FORMAT_RGBA8888 = OMX_COLOR_FormatVendorStartUnused + 100,
 };
-
-/**
- * @brief Enumerates the extended codec error type.
- */
-enum CodecErrorTypeExt {
-    /** Param Sets Illegal */
-    OMX_ErrorParameterSetsIllegal = OMX_ErrorVendorStartUnused + 1,
-    /** Param Sets Lost */
-    OMX_ErrorParameterSetsLost,
-};
  
 /**
  * @brief Enumerates the buffer types.
@@ -479,6 +469,7 @@ enum CodecVideoFeatureKeyExt {
     CODEC_VIDEO_FEATURE_LTR,
     CODEC_VIDEO_FEATURE_ENCODE_B_FRAME,
     CODEC_VIDEO_FEATURE_ONLY_I_FRAME,
+    CODEC_VIDEO_FEATURE_OPEN_GOP,
 };
 
 struct OmxVideoParamsWirelessLowdelay {
@@ -544,14 +535,24 @@ enum OmxIndexCodecOtherExtType {
     /** Extended Config OperatingRate index */
     OMX_IndexCodecExtConfigOperatingRate,
 };
- 
+
 enum OmxIndexCodecVendorExtType {
     /** Extended Channel Attributes index */
     OMX_IndexCodecExtChannelAttributes = OMX_IndexVendorStartUnused + 0x1,
     /** CodecEnableNativeBufferParams */
     OMX_IndexCodecExtEnableNativeBuffer,
 };
- 
+
+/**
+ * @brief Enumerates the extended codec error type.
+ */
+enum CodecErrorTypeExt {
+    /** Param Sets Illegal */
+    OMX_ErrorParameterSetsIllegal = OMX_ErrorVendorStartUnused + 1,
+    /** Param Sets Lost */
+    OMX_ErrorParameterSetsLost,
+};
+
 /**
  * @brief Structure for controlling HEVC video encoding
  */
@@ -689,6 +690,7 @@ struct CodecEncGopMode {
     uint32_t size;                        /** Size of the structure */
     union OMX_VERSIONTYPE version;        /** Component version */
     OMX_VIDEO_GOP_MODE gopMode;           /** encode gop mode */
+    bool useOpenGop;                      /** use open gop */
 };
 
 struct ColorXY {
