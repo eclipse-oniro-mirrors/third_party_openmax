@@ -457,6 +457,8 @@ enum OmxIndexCodecExType {
     OMX_IndexParamC2paSignSize,
     /** OMX_CONFIG_BOOLEANTYPE */
     OMX_IndexParamDecModeI,
+    /** Encoder Enable Open Gop */
+    OMX_IndexParamEncOpenGop,
 };
  
 enum CodecVideoFeatureKeyExt {
@@ -690,7 +692,6 @@ struct CodecEncGopMode {
     uint32_t size;                        /** Size of the structure */
     union OMX_VERSIONTYPE version;        /** Component version */
     OMX_VIDEO_GOP_MODE gopMode;           /** encode gop mode */
-    bool useOpenGop;                      /** use open gop */
 };
 
 struct ColorXY {
